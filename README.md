@@ -4,7 +4,7 @@ Dockerized gcloud
 
     docker build -t mac2000/gcloud .
     docker login
-    docker push mac2000/elastic17:latest
+    docker push mac2000/gcloud:latest
 
 # Usage
 
