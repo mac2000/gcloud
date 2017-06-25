@@ -10,8 +10,18 @@ Dockerized gcloud
 
     docker run -it --rm --name=rualogs -v ${PWD}:/code -w /code mac2000/gcloud bash
 
-# TODO
+# Credentials
 
-Credentials are stored at `~/.config`, also `~/.boto` stres configuration
+After performing `gcloud init` your credentials are stored at `~/.config`, also `~/.boto` stores configuration
 
-That files may be stored locally and used later to skip `gcloud init`
+That files may be stored locally and used later, e.g.:
+
+    docker cp rualogs:/root/.boto .
+    docker cp rualogs:/root/.config .
+    mv .boto /some/where/boto
+    mv .config /some/where/config
+
+Then
+
+    docker run -it --rm --name=rualogs -v ${PWD}:/code -w /code -v /some/where/boto:/root/.boto -v
+ /some/where/config:/root/.config mac2000/gcloud bash
